@@ -1,0 +1,28 @@
+body {
+  --accent-color: rgb(255, 69, 0);
+  --background-color: rgb(252, 252, 252);
+  --text-color: var(--background-color);
+  --border-color: var(--background-color);
+  --button-text-color: var(--background-color);
+  --button-hover-color: rgb(255, 99, 42);
+  --display-component-background-color: rgb(95, 95, 95);
+  --box-shadow-color: rgb(165, 165, 165);
+  --transition-delay: 0.5s;
+
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  transition: var(--transition-delay);
+
+  &.dark {
+    --accent-color: #d0d066;
+    --background-color: #333;
+    --button-hover-color: #e2e26b;
+    --box-shadow-color: rgb(138, 138, 138);
+    --display-component-background-color: rgb(252, 252, 252);
+  }
+}

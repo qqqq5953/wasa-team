@@ -1,18 +1,73 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <button @click="toggleTheme" class="btn">toggle theme</button>
+  <div class="inputField">
+    <div class="button-group">
+      <button class="btn" @click="inputType = 'text'">input text</button>
+      <button class="btn" @click="inputType = 'radio'">input radio</button>
+      <button class="btn" @click="inputType = 'select'">select menu</button>
+    </div>
+    <displayComponent :inputType="inputType" />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import displayComponent from '@/components/displayComponent.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    HelloWorld
+    displayComponent
+  },
+  data() {
+    return {
+      type: 'text'
+    }
+  },
+  computed: {
+    inputType: {
+      get() {
+        return this.type
+      },
+      set(val) {
+        this.type = val
+      }
+    }
+  },
+  methods: {
+    toggleTheme() {
+      document.body.classList.toggle('dark')
+    }
   }
 }
 </script>
+
+<style scoped lang="scss">
+.inputField {
+  background-color: rgb(187, 187, 187);
+  box-shadow: 0 4px 10px 1px var(--box-shadow-color);
+  border-radius: 0.25rem;
+  padding: 2rem;
+  margin-top: 1rem;
+}
+
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  color: var(--button-text-color);
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    background-color: var(--button-hover-color);
+  }
+}
+</style>

@@ -1,30 +1,73 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view/>
+  <button @click="toggleTheme" class="btn">toggle theme</button>
+  <div class="inputField">
+    <div class="button-group">
+      <button class="btn" @click="inputType = 'text'">input text</button>
+      <button class="btn" @click="inputType = 'radio'">input radio</button>
+      <button class="btn" @click="inputType = 'select'">select menu</button>
+    </div>
+    <displayComponent :inputType="inputType" />
+  </div>
 </template>
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+import displayComponent from '@/components/displayComponent.vue'
+
+export default {
+  name: 'HomeView',
+  components: {
+    displayComponent
+  },
+  data() {
+    return {
+      type: 'text'
+    }
+  },
+  computed: {
+    inputType: {
+      get() {
+        return this.type
+      },
+      set(val) {
+        this.type = val
+      }
+    }
+  },
+  methods: {
+    toggleTheme() {
+      document.body.classList.toggle('dark')
+    }
+  }
+}
+</script>
+
+<style scoped lang="scss">
+.inputField {
+  background-color: rgb(187, 187, 187);
+  box-shadow: 0 4px 10px 1px var(--box-shadow-color);
+  border-radius: 0.25rem;
+  padding: 2rem;
+  margin-top: 1rem;
 }
 
-nav {
-  padding: 30px;
+.button-group {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+.btn {
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  color: var(--button-text-color);
+  background-color: var(--accent-color);
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
 
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+  &:hover,
+  &:focus {
+    background-color: var(--button-hover-color);
   }
 }
 </style>
