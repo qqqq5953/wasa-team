@@ -38,18 +38,23 @@
 </template>
 
 <script>
+import { ref } from 'vue'
+
 export default {
   props: {
     inputType: { type: String }
   },
-  data() {
+  setup() {
+    const output = ref('')
+    const teams = ref({
+      team1: { name: 'wasa 1', id: '001' },
+      team2: { name: 'wasa 2', id: '002' },
+      team3: { name: 'wasa 3', id: '003' }
+    })
+
     return {
-      output: '',
-      teams: {
-        team1: { name: 'wasa 1', id: '001' },
-        team2: { name: 'wasa 2', id: '002' },
-        team3: { name: 'wasa 3', id: '003' }
-      }
+      output,
+      teams
     }
   },
   watch: {

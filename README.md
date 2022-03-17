@@ -38,3 +38,4 @@
 
 1. 將三種 input 放在同一個 component 統一管理，output 則是用另一個 component，以後有類似呈現 output 需求皆可透過 props 呈現
 2. 將主題顏色分區管理，將來如有其他 theme mode 的需求，皆可仿照 dark 的方式
+3. 對於 title 及 description 的設置，我用 vue-meta 套件，並在 HomeView.vue 做設置。

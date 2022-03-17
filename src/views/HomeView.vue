@@ -15,6 +15,7 @@
 import inputComponent from '@/components/inputComponent.vue'
 import outputComponent from '@/components/outputComponent.vue'
 import { useMeta } from 'vue-meta'
+import { ref } from 'vue'
 
 export default {
   setup() {
@@ -27,18 +28,19 @@ export default {
         }
       ]
     })
-  },
 
+    const type = ref('text')
+    const output = ref('')
+
+    return {
+      type,
+      output
+    }
+  },
   name: 'HomeView',
   components: {
     inputComponent,
     outputComponent
-  },
-  data() {
-    return {
-      type: 'text',
-      output: ''
-    }
   },
   computed: {
     inputType: {
