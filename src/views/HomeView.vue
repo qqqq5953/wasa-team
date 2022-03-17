@@ -14,8 +14,21 @@
 <script>
 import inputComponent from '@/components/inputComponent.vue'
 import outputComponent from '@/components/outputComponent.vue'
+import { useMeta } from 'vue-meta'
 
 export default {
+  setup() {
+    useMeta({
+      title: 'Andy Hsieh',
+      description: [
+        {
+          content:
+            '山葵組WasaTeam創立於2016年，主攻網頁、APP、系統規劃設計與開發，過去累積了不少大大小小專案和客戶，平時也喜歡研究一些哩哩叩叩好玩的網頁特效應用在作品上，目前團隊8個人，都是90後年輕人，是能夠輕鬆溝通但絕不馬虎隨便的工作氣氛'
+        }
+      ]
+    })
+  },
+
   name: 'HomeView',
   components: {
     inputComponent,
