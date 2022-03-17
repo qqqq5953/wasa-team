@@ -34,17 +34,6 @@
         </div>
       </template>
     </section>
-
-    <section class="outputArea">
-      Output:
-      <div class="output">
-        {{
-          output.toLowerCase() === 'heisenberg'
-            ? 'You are god damn right'
-            : output
-        }}
-      </div>
-    </section>
   </div>
 </template>
 
@@ -66,6 +55,9 @@ export default {
   watch: {
     inputType() {
       this.output = ''
+    },
+    output() {
+      this.$emit('emitOutput', this.output)
     }
   }
 }
@@ -73,7 +65,7 @@ export default {
 
 <style scoped lang="scss">
 .wrap {
-  background-color: var(--display-component-background-color);
+  background-color: var(--input-component-background-color);
   border-radius: 0.25rem;
   padding: 1.5rem;
 }
@@ -83,10 +75,10 @@ export default {
   font-size: 1.5rem;
 
   .text {
-    border: 1px solid var(--border-color);
-    background-color: transparent;
     outline: none;
+    border: 1px solid var(--border-color);
     border-radius: 0.25rem;
+    background-color: transparent;
     padding: 0.5rem 0.75rem;
     font-size: 1.5rem;
     color: var(--text-color);
@@ -100,6 +92,7 @@ export default {
     border: 1px solid var(--border-color);
     border-radius: 0.25rem;
     padding: 0.5rem 0.75rem;
+
     &:first-of-type {
       margin-bottom: 1rem;
     }
@@ -119,10 +112,10 @@ export default {
       -webkit-appearance: none; /* Safari and Chrome */
       appearance: none;
 
-      border: 1px solid var(--border-color);
-      background-color: transparent;
       outline: none;
+      border: 1px solid var(--border-color);
       border-radius: 0.25rem;
+      background-color: transparent;
       padding: 0.5rem 2.25rem 0.5rem 0.75rem;
       font-size: 1.5rem;
       color: var(--text-color);
@@ -132,27 +125,15 @@ export default {
       position: absolute;
       top: 0;
       bottom: 0;
-      margin: auto;
       right: 10px;
       z-index: 2;
+      margin: auto;
       border-left: 10px solid transparent;
       border-right: 10px solid transparent;
       border-top: 10px solid var(--accent-color);
       width: 0px;
       height: 0px;
     }
-  }
-}
-
-.outputArea {
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-  color: var(--text-color);
-  font-size: 1.5rem;
-
-  .output {
-    margin-left: 0.5rem;
   }
 }
 </style>

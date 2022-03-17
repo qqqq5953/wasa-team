@@ -6,21 +6,25 @@
       <button class="btn" @click="inputType = 'radio'">input radio</button>
       <button class="btn" @click="inputType = 'select'">select menu</button>
     </div>
-    <displayComponent :inputType="inputType" />
+    <inputComponent :inputType="inputType" @emitOutput="receiveOutput" />
+    <outputComponent :output="output" />
   </div>
 </template>
 
 <script>
-import displayComponent from '@/components/displayComponent.vue'
+import inputComponent from '@/components/inputComponent.vue'
+import outputComponent from '@/components/outputComponent.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    displayComponent
+    inputComponent,
+    outputComponent
   },
   data() {
     return {
-      type: 'text'
+      type: 'text',
+      output: ''
     }
   },
   computed: {
@@ -36,6 +40,9 @@ export default {
   methods: {
     toggleTheme() {
       document.body.classList.toggle('dark')
+    },
+    receiveOutput(val) {
+      this.output = val
     }
   }
 }
