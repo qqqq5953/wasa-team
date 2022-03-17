@@ -17,7 +17,7 @@
 ```
 <input type="text">
 ```
-2. 設置 output 變數綁定 v-modal 呈現結果，不論是 <input> 或 <select> 都共用此變數。
+2. 設置 output 變數綁定 v-modal 呈現結果，不論是 input 或 select 都共用此變數。
 3. 用 watch 監聽 inputType，當 inputType 有變動時（即點選不同按鈕時）， 將 output 內容清空。
 4. 用 watch 監聽 output，當 output 有變動時，將 output $emit 給父元件 HomeView.vue。
 
